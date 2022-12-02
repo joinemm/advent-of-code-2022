@@ -1,4 +1,4 @@
-name: Save benchmarks
+name: Run benchmarks
 
 on:
   push:
@@ -15,6 +15,9 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
+      
+      - run: rustup toolchain install stable --profile minimal
+      - uses: Swatinem/rust-cache@v2
 
       - name: Build
         run: cargo build --release
@@ -29,6 +32,6 @@ jobs:
         run: |
           git config user.email 'actions@github.com'
           git config user.name 'github-actions'
-          if git commit -am ':robot: update benchmarks'; then
+          if git commit -am ':robot: Update benchmarks'; then
             git push origin HEAD:${{ github.ref }}
           fi
