@@ -1,13 +1,13 @@
+use std::cmp::Reverse;
+
+use itertools::Itertools;
+
 #[aoc_generator(day1)]
 pub fn input_parser(input: &str) -> Vec<u32> {
-    input.lines().fold(vec![0], |mut elves, line| {
-        if line.is_empty() {
-            elves.push(0);
-        } else {
-            *elves.last_mut().unwrap() += line.parse::<u32>().unwrap();
-        }
-        elves
-    })
+    input
+        .split("\n\n")
+        .map(|elf| elf.lines().map(|line| line.parse::<u32>().unwrap()).sum())
+        .collect()
 }
 
 #[aoc(day1, part1)]
@@ -17,9 +17,11 @@ pub fn solve_part1(elves: &Vec<u32>) -> u32 {
 
 #[aoc(day1, part2)]
 pub fn solve_part2(elves: &Vec<u32>) -> u32 {
-    let mut sorted_elves = elves.clone();
-    sorted_elves.sort();
-    (0..3).map(|_| sorted_elves.pop().unwrap()).sum()
+    elves
+        .into_iter()
+        .sorted_by_key(|&x| Reverse(x))
+        .take(3)
+        .sum()
 }
 
 #[cfg(test)]
