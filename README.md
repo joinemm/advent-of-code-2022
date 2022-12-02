@@ -1,18 +1,18 @@
-Advent of code 2022
 ```
+Advent of code 2022
 Day 1 - Part 1: 65912
-        generator: 71.125µs,
-        runner: 1.363µs
+	generator: 73.1µs,
+	runner: 600ns
 
 Day 1 - Part 2: 195625
-        generator: 66.998µs,
-        runner: 13.826µs
+	generator: 66.799µs,
+	runner: 15.3µs
 
 Day 2 - Part 1: 13268
-        generator: 85.252µs,
-        runner: 28.334µs
+	generator: 69.5µs,
+	runner: 38.1µs
 
 Day 2 - Part 2: 15508
-        generator: 79.842µs,
-        runner: 25.188µs
+	generator: 57.8µs,
+	runner: 29.3µs
 ```
