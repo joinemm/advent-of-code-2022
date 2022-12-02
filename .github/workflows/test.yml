@@ -2,7 +2,15 @@ name: Build and Test
 
 on:
   push:
+    paths-ignore:
+      - '*.md'
+      - '.github/**'
+      - '.gitignore' 
   pull_request:
+    paths-ignore:
+      - '*.md'
+      - '.github/**'
+      - '.gitignore'
 
 env:
   CARGO_TERM_COLOR: always
