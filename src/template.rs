@@ -1,8 +1,5 @@
 use itertools::Itertools;
 
-// #[aoc_generator(dayX)]
-// pub fn input_parser(input: &str) -> &str {}
-
 #[aoc(dayX, part1)]
 fn solve_part1(input: &str) -> u32 {}
 
@@ -12,31 +9,28 @@ fn solve_part1(input: &str) -> u32 {}
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::fs;
+    use crate::get_input;
+    use test_case::test_case;
 
-    #[test]
-    fn part1_example() {
-        assert_eq!(solve_part1(""), 000)
+    const EXAMPLE_INPUT: &str = "";
+
+    #[test_case(EXAMPLE_INPUT => 157)]
+    fn part1_example(input: &str) -> u32 {
+        solve_part1(input)
     }
 
-    // #[test]
-    // fn part2_example() {
-    //     assert_eq!(solve_part2(""), 000)
+    // #[test_case(EXAMPLE_INPUT => 70)]
+    // fn part2_example(input: &str) -> u32 {
+    //     solve_part2(input)
     // }
 
-    // #[test]
-    // fn part1_real() {
-    //     assert_eq!(
-    //         solve_part1(&fs::read_to_string("input/2022/dayX.txt").unwrap()),
-    //         000
-    //     )
+    // #[test_case(&get_input("dayX") => 8139)]
+    // fn part1_real(input: &str) -> u32 {
+    //     solve_part1(input)
     // }
 
-    // #[test]
-    // fn part2_real() {
-    //     assert_eq!(
-    //         solve_part2(&fs::read_to_string("input/2022/dayX.txt").unwrap()),
-    //         000
-    //     )
+    // #[test_case(&get_input("dayX") => 2668)]
+    // fn part2_real(input: &str) -> u32 {
+    //     solve_part2(input)
     // }
 }

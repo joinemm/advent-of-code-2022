@@ -76,35 +76,34 @@ fn solve_part2(input: &str) -> u32 {
         })
         .sum()
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::fs;
+    use crate::get_input;
+    use test_case::test_case;
 
-    #[test]
-    fn part1_example() {
-        assert_eq!(solve_part1("A Y\nB X\nC Z"), 15)
+    const EXAMPLE_INPUT: &str = "A Y
+B X
+C Z
+";
+
+    #[test_case(EXAMPLE_INPUT => 15)]
+    fn part1_example(input: &str) -> u32 {
+        solve_part1(input)
     }
 
-    #[test]
-    fn part2_example() {
-        assert_eq!(solve_part2("A Y\nB X\nC Z"), 12)
+    #[test_case(EXAMPLE_INPUT => 12)]
+    fn part2_example(input: &str) -> u32 {
+        solve_part2(input)
     }
 
-    #[test]
-    fn part1_real() {
-        assert_eq!(
-            solve_part1(&fs::read_to_string("input/2022/day2.txt").unwrap()),
-            13268
-        )
+    #[test_case(&get_input("day2") => 13268)]
+    fn part1_real(input: &str) -> u32 {
+        solve_part1(input)
     }
 
-    #[test]
-    fn part2_real() {
-        assert_eq!(
-            solve_part2(&fs::read_to_string("input/2022/day2.txt").unwrap()),
-            15508
-        )
+    #[test_case(&get_input("day2") => 15508)]
+    fn part2_real(input: &str) -> u32 {
+        solve_part2(input)
     }
 }

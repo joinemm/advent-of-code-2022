@@ -23,45 +23,42 @@ pub fn solve_part2(input: &str) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::fs;
+    use crate::get_input;
+    use test_case::test_case;
 
-    #[test]
-    fn part1_example() {
-        assert_eq!(
-            solve_part1(&input_parser(
-                "1000\n2000\n3000\n\n4000\n\n5000\n6000\n\n7000\n8000\n9000\n\n10000"
-            )),
-            24000
-        );
+    const EXAMPLE_INPUT: &str = "1000
+2000
+3000
+
+4000
+
+5000
+6000
+
+7000
+8000
+9000
+
+10000
+";
+
+    #[test_case(EXAMPLE_INPUT => 24000)]
+    fn part1_example(input: &str) -> u32 {
+        solve_part1(input)
     }
 
-    #[test]
-    fn part2_example() {
-        assert_eq!(
-            solve_part2(&input_parser(
-                "1000\n2000\n3000\n\n4000\n\n5000\n6000\n\n7000\n8000\n9000\n\n10000"
-            )),
-            45000
-        );
+    #[test_case(EXAMPLE_INPUT => 45000)]
+    fn part2_example(input: &str) -> u32 {
+        solve_part2(input)
     }
 
-    #[test]
-    fn part1_real() {
-        assert_eq!(
-            solve_part1(&input_parser(
-                &fs::read_to_string("input/2022/day1.txt").unwrap()
-            )),
-            65912
-        )
+    #[test_case(&get_input("day1") => 65912)]
+    fn part1_real(input: &str) -> u32 {
+        solve_part1(input)
     }
 
-    #[test]
-    fn part2_real() {
-        assert_eq!(
-            solve_part2(&input_parser(
-                &fs::read_to_string("input/2022/day1.txt").unwrap()
-            )),
-            195625
-        )
+    #[test_case(&get_input("day1") => 195625)]
+    fn part2_real(input: &str) -> u32 {
+        solve_part2(input)
     }
 }

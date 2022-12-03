@@ -10,3 +10,6 @@ bench = false
 aoc-runner = "0.3.0"
 aoc-runner-derive = "0.3.0"
 itertools = "0.10.5"
+
+[dev-dependencies]
+test-case = "2.2.2"

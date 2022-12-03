@@ -41,51 +41,33 @@ fn solve_part2(input: &str) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::fs;
+    use crate::get_input;
+    use test_case::test_case;
 
-    #[test]
-    fn part1_example() {
-        assert_eq!(
-            solve_part1(
-                "vJrwpWtwJgWrhcsFMMfFFhFp
+    const EXAMPLE_INPUT: &str = "vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
 PmmdzqPrVvPwwTWBwg
 wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
 ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw"
-            ),
-            157
-        )
+CrZsJsPPZsGzwwsLwLmpwMDw";
+
+    #[test_case(EXAMPLE_INPUT => 157)]
+    fn part1_example(input: &str) -> u32 {
+        solve_part1(input)
     }
 
-    #[test]
-    fn part2_example() {
-        assert_eq!(
-            solve_part2(
-                "vJrwpWtwJgWrhcsFMMfFFhFp
-jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-PmmdzqPrVvPwwTWBwg
-wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw"
-            ),
-            70
-        )
+    #[test_case(EXAMPLE_INPUT => 70)]
+    fn part2_example(input: &str) -> u32 {
+        solve_part2(input)
     }
 
-    #[test]
-    fn part1_real() {
-        assert_eq!(
-            solve_part1(&fs::read_to_string("input/2022/day3.txt").unwrap()),
-            8139
-        )
+    #[test_case(&get_input("day3") => 8139)]
+    fn part1_real(input: &str) -> u32 {
+        solve_part1(input)
     }
 
-    #[test]
-    fn part2_real() {
-        assert_eq!(
-            solve_part2(&fs::read_to_string("input/2022/day3.txt").unwrap()),
-            2668
-        )
+    #[test_case(&get_input("day3") => 2668)]
+    fn part2_real(input: &str) -> u32 {
+        solve_part2(input)
     }
 }
