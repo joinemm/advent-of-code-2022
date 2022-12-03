@@ -1,64 +1,41 @@
 use itertools::Itertools;
 
+fn char_value(c: char) -> u32 {
+    if c.is_uppercase() {
+        c as u32 - 38
+    } else {
+        c as u32 - 96
+    }
+}
+
 #[aoc(day3, part1)]
 fn solve_part1(input: &str) -> u32 {
-    let backpacks: Vec<(&str, &str)> = input
+    input
         .lines()
         .map(|line| line.split_at(line.len() / 2))
-        .collect();
-
-    let mut both: Vec<char> = Vec::new();
-    for backpack in backpacks {
-        for c in backpack.0.chars() {
-            if backpack.1.chars().contains(&c) {
-                both.push(c.clone());
-                break;
-            }
-        }
-    }
-
-    let mut total = 0;
-
-    for c in both {
-        let mut value = c as u32;
-        if c.is_uppercase() {
-            value -= 38
-        } else {
-            value -= 96
-        }
-        total += value
-    }
-
-    total
+        .map(|(com1, com2)| {
+            com1.chars()
+                .take_while(|c| !com2.chars().contains(c))
+                .map(char_value)
+                .sum::<u32>()
+        })
+        .sum()
 }
 
 #[aoc(day3, part2)]
 fn solve_part2(input: &str) -> u32 {
-    let mut both: Vec<char> = Vec::new();
-    for group in &input.lines().chunks(3) {
-        let (b1, b2, b3) = group.collect_tuple().unwrap();
-
-        for c in b1.chars() {
-            if b2.chars().contains(&c) && b3.chars().contains(&c) {
-                both.push(c);
-                break;
-            }
-        }
-    }
-
-    let mut total = 0;
-
-    for c in both {
-        let mut value = c as u32;
-        if c.is_uppercase() {
-            value -= 38
-        } else {
-            value -= 96
-        }
-        total += value
-    }
-
-    total
+    input
+        .lines()
+        .chunks(3)
+        .into_iter()
+        .map(|group| {
+            let (b1, b2, b3) = group.collect_tuple().unwrap();
+            b1.chars()
+                .take_while(|c| !(b2.chars().contains(c) && b3.chars().contains(c)))
+                .map(char_value)
+                .sum::<u32>()
+        })
+        .sum()
 }
 
 #[cfg(test)]
