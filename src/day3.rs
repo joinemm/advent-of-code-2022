@@ -26,10 +26,8 @@ fn solve_part1(input: &str) -> u32 {
 fn solve_part2(input: &str) -> u32 {
     input
         .lines()
-        .chunks(3)
-        .into_iter()
-        .map(|group| {
-            let (b1, b2, b3) = group.collect_tuple().unwrap();
+        .tuples()
+        .map(|(b1, b2, b3)| {
             b1.chars()
                 .take_while(|c| !(b2.chars().contains(c) && b3.chars().contains(c)))
                 .map(char_value)

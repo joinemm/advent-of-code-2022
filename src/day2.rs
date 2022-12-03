@@ -45,34 +45,34 @@ impl Hand {
     }
 }
 
-#[aoc_generator(day2)]
-pub fn input_parser(input: &str) -> Vec<(char, char)> {
+#[aoc(day2, part1)]
+fn solve_part1(input: &str) -> u32 {
     input
         .lines()
         .map(|line| {
             line.chars()
                 .filter(|c| !c.is_whitespace())
-                .collect_tuple()
-                .unwrap()
+                .map(Hand::from_letter)
+                .tuples()
+                .map(|(opp, me)| me.round_outcome(&opp))
+                .sum::<u32>()
         })
-        .collect()
-}
-
-#[aoc(day2, part1)]
-fn solve_part1(rounds: &Vec<(char, char)>) -> u32 {
-    rounds
-        .iter()
-        .map(|(opponent, me)| Hand::from_letter(*me).round_outcome(&Hand::from_letter(*opponent)))
         .sum()
 }
 
 #[aoc(day2, part2)]
-fn solve_part2(rounds: &Vec<(char, char)>) -> u32 {
-    rounds
-        .iter()
-        .map(|(opponent, me)| {
-            let opponent_hand = &Hand::from_letter(*opponent);
-            Hand::from_outcome(opponent_hand, *me).round_outcome(opponent_hand)
+fn solve_part2(input: &str) -> u32 {
+    input
+        .lines()
+        .map(|line| {
+            line.chars()
+                .filter(|c| !c.is_whitespace())
+                .tuples()
+                .map(|(opp, me)| {
+                    let opp_hand = &Hand::from_letter(opp);
+                    Hand::from_outcome(opp_hand, me).round_outcome(&opp_hand)
+                })
+                .sum::<u32>()
         })
         .sum()
 }
@@ -83,11 +83,11 @@ mod tests {
 
     #[test]
     fn part1() {
-        assert_eq!(solve_part1(&input_parser("A Y\nB X\nC Z")), 15)
+        assert_eq!(solve_part1("A Y\nB X\nC Z"), 15)
     }
 
     #[test]
     fn part2() {
-        assert_eq!(solve_part2(&input_parser("A Y\nB X\nC Z")), 12)
+        assert_eq!(solve_part2("A Y\nB X\nC Z"), 12)
     }
 }
