@@ -80,14 +80,31 @@ fn solve_part2(input: &str) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::fs;
 
     #[test]
-    fn part1() {
+    fn part1_example() {
         assert_eq!(solve_part1("A Y\nB X\nC Z"), 15)
     }
 
     #[test]
-    fn part2() {
+    fn part2_example() {
         assert_eq!(solve_part2("A Y\nB X\nC Z"), 12)
+    }
+
+    #[test]
+    fn part1_real() {
+        assert_eq!(
+            solve_part1(&fs::read_to_string("input/2022/day2.txt").unwrap()),
+            13268
+        )
+    }
+
+    #[test]
+    fn part2_real() {
+        assert_eq!(
+            solve_part2(&fs::read_to_string("input/2022/day2.txt").unwrap()),
+            15508
+        )
     }
 }
