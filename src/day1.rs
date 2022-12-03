@@ -1,25 +1,21 @@
+use itertools::Itertools;
 use std::cmp::Reverse;
 
-use itertools::Itertools;
-
-#[aoc_generator(day1)]
-pub fn input_parser(input: &str) -> Vec<u32> {
+#[aoc(day1, part1)]
+pub fn solve_part1(input: &str) -> u32 {
     input
         .split("\n\n")
         .map(|elf| elf.lines().map(|line| line.parse::<u32>().unwrap()).sum())
-        .collect()
-}
-
-#[aoc(day1, part1)]
-pub fn solve_part1(elves: &Vec<u32>) -> u32 {
-    *elves.iter().max().unwrap()
+        .max()
+        .unwrap()
 }
 
 #[aoc(day1, part2)]
-pub fn solve_part2(elves: &Vec<u32>) -> u32 {
-    elves
-        .into_iter()
-        .sorted_by_key(|&x| Reverse(x))
+pub fn solve_part2(input: &str) -> u32 {
+    input
+        .split("\n\n")
+        .map(|elf| elf.lines().map(|line| line.parse::<u32>().unwrap()).sum())
+        .sorted_by_key(|&x: &u32| Reverse(x))
         .take(3)
         .sum()
 }
