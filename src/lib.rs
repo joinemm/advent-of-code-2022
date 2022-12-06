@@ -9,11 +9,11 @@ pub mod day3;
 pub mod day4;
 
 #[cfg(test)]
-use std::fs;
-
-#[cfg(test)]
-fn get_input(day: &str) -> String {
-    fs::read_to_string(format!("input/2022/{}.txt", day)).unwrap()
+mod test_utils {
+    use std::fs;
+    pub fn get_input(day: &str) -> String {
+        fs::read_to_string(format!("input/2022/{}.txt", day)).unwrap()
+    }
 }
 
 aoc_lib! { year = 2022 }

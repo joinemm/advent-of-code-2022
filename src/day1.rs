@@ -23,7 +23,7 @@ pub fn solve_part2(input: &str) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::get_input;
+    use crate::test_utils::*;
     use test_case::test_case;
 
     const EXAMPLE_INPUT: &str = "1000
