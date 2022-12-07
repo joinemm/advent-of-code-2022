@@ -1,10 +1,14 @@
 use itertools::Itertools;
 
 #[aoc(dayX, part1)]
-fn solve_part1(input: &str) -> u32 {}
+fn solve_part1(input: &str) -> u32 {
+    1
+}
 
 // #[aoc(dayX, part2)]
-// fn solve_part2(input: &str) -> u32 {}
+// fn solve_part2(input: &str) -> u32 {
+//     1
+// }
 
 #[cfg(test)]
 mod tests {
