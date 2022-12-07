@@ -1,4 +1,3 @@
-use itertools::Itertools;
 use std::collections::VecDeque;
 
 #[aoc(day6, part1)]
