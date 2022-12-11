@@ -1,6 +1,5 @@
-use std::collections::HashSet;
-
 use itertools::Itertools;
+use std::collections::HashSet;
 
 #[derive(PartialEq, Eq, Hash, Copy, Clone, Debug)]
 struct Point {
@@ -20,14 +19,10 @@ impl Point {
     }
 
     fn move_towards(&mut self, point: &Point) {
-        if !self.is_touching(&point) {
+        if (self.x - point.x).abs() > 1 || (self.y - point.y).abs() > 1 {
             self.x += (point.x - self.x).clamp(-1, 1);
             self.y += (point.y - self.y).clamp(-1, 1);
         }
-    }
-
-    fn is_touching(&self, point: &Point) -> bool {
-        return (self.x - point.x).abs() <= 1 && (self.y - point.y).abs() <= 1;
     }
 }
 
