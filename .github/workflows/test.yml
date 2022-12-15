@@ -3,15 +3,15 @@ name: Build and Test
 on:
   workflow_dispatch:
   push:
-    paths-ignore:
-      - '*.md'
-      - '.github/**'
-      - '.gitignore' 
+    paths:
+      - 'src/**'
+      - 'Cargo.*'
+      - 'input/**'
   pull_request:
-    paths-ignore:
-      - '*.md'
-      - '.github/**'
-      - '.gitignore'
+    paths:
+      - 'src/**'
+      - 'Cargo.*'
+      - 'input/**'
 
 env:
   CARGO_TERM_COLOR: always

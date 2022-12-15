@@ -3,10 +3,10 @@ name: Run benchmarks
 on:
   workflow_dispatch:
   push:
-    paths-ignore:
-      - '*.md'
-      - '.github/**'
-      - '.gitignore'
+    paths:
+      - 'src/**'
+      - 'Cargo.*'
+      - 'input/**'
 
 env:
   CARGO_TERM_COLOR: always
