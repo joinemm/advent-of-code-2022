@@ -3,7 +3,8 @@ extern crate aoc_runner;
 #[macro_use]
 extern crate aoc_runner_derive;
 
-pub mod days;
+#[path = "2022/mod.rs"]
+pub mod year_2022;
 
 #[cfg(test)]
 mod test_utils {
