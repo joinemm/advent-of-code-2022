@@ -1,80 +1,80 @@
 ```
 Advent of code 2022
 Day 1 - Part 1: 65912
-	generator: 300ns,
-	runner: 71.901µs
+	generator: 400ns,
+	runner: 84.101µs
 
 Day 1 - Part 2: 195625
 	generator: 200ns,
-	runner: 86.2µs
+	runner: 76.901µs
 
 Day 2 - Part 1: 13268
-	generator: 100ns,
-	runner: 125.801µs
+	generator: 400ns,
+	runner: 108.702µs
 
 Day 2 - Part 2: 15508
 	generator: 100ns,
-	runner: 120.801µs
+	runner: 118.202µs
 
 Day 3 - Part 1: 8139
-	generator: 200ns,
-	runner: 54.9µs
+	generator: 100ns,
+	runner: 66.001µs
 
 Day 3 - Part 2: 2668
 	generator: 100ns,
-	runner: 76.701µs
+	runner: 57.601µs
 
 Day 4 - Part 1: 424
-	generator: 200ns,
-	runner: 2.301319ms
+	generator: 100ns,
+	runner: 2.757341ms
 
 Day 4 - Part 2: 804
-	generator: 200ns,
-	runner: 2.40872ms
+	generator: 300ns,
+	runner: 2.797741ms
 
 Day 5 - Part 1: RNZLFZSJH
-	generator: 100ns,
-	runner: 132.801µs
+	generator: 200ns,
+	runner: 122.301µs
 
 Day 5 - Part 2: CNSFCGJSM
-	generator: 200ns,
-	runner: 145.101µs
+	generator: 100ns,
+	runner: 136.202µs
 
 Day 6 - Part 1: 1300
-	generator: 200ns,
-	runner: 125.001µs
+	generator: 100ns,
+	runner: 106.901µs
 
 Day 6 - Part 2: 3986
-	generator: 100ns,
-	runner: 1.336011ms
+	generator: 200ns,
+	runner: 1.125717ms
 
 Day 7 - Part 1: 1307902
-	generator: 200ns,
-	runner: 230.002µs
+	generator: 100ns,
+	runner: 202.703µs
 
 Day 7 - Part 2: 7068748
 	generator: 100ns,
-	runner: 177.802µs
+	runner: 159.503µs
 
 Day 8 - Part 1: 1807
-	generator: 37.4µs,
-	runner: 2.190718ms
+	generator: 30.9µs,
+	runner: 1.934829ms
 
 Day 8 - Part 2: 480000
-	generator: 36.601µs,
-	runner: 3.764131ms
+	generator: 46.101µs,
+	runner: 3.566254ms
 
 Day 9 - Part 1: 5874
 	generator: 100ns,
-	runner: 768.107µs
+	runner: 725.811µs
 
 Day 9 - Part 2: 2467
 	generator: 200ns,
-	runner: 1.069109ms
+	runner: 956.414µs
 
 Day 10 - Part 1: 16480
-	generator: 100ns,
-	runner: 10.1µs
+	generator: 200ns,
+	runner: 26.001µs
 
 Day 10 - Part 2: 
 ###..#....####.####.#..#.#....###..###..
@@ -84,5 +84,5 @@ Day 10 - Part 2:
 #....#....#....#....#..#.#....#....#..#.
 #....####.####.#.....##..####.#....###..
 	generator: 100ns,
-	runner: 14µs
+	runner: 12.9µs
 ```
