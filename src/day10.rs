@@ -4,83 +4,69 @@ use itertools::Itertools;
 fn solve_part1(input: &str) -> i32 {
     let mut register = 1;
     let mut current_job: Option<i32> = None;
-    let mut signals: Vec<i32> = Vec::new();
-    let mut lines = input.lines();
+    let mut total_strength = 0;
+    let mut line_iterator = input.lines();
     let mut i = 1;
     loop {
-        println!("cycle {i}, X {register}");
-        if i == 20 || (i > 20 && (i - 20) % 40 == 0) {
-            let strength = i * register;
-            println!("During the {i}th cycle, signal strength is {strength}");
-            signals.push(strength)
+        if i == 20 || (i - 20) % 40 == 0 {
+            total_strength += i * register;
         }
         match current_job {
-            Some(job) => {
-                register += job;
+            Some(instruction) => {
+                register += instruction;
                 current_job = None;
             }
-            None => {
-                let line = lines.next();
-                match line {
-                    Some(v) => {
-                        if v.starts_with("addx") {
-                            let n: i32 = v.split_once(" ").unwrap().1.parse().unwrap();
-                            current_job = Some(n);
-                        }
-                    }
-                    None => break,
+            None => match line_iterator.next() {
+                Some(v) if v.starts_with("addx") => {
+                    current_job = Some(v.split_once(" ").unwrap().1.parse().unwrap());
                 }
-            }
+                Some(_) => continue,
+                None => break,
+            },
         }
         i += 1;
     }
-    signals.iter().sum()
+    total_strength
 }
 
 #[aoc(day10, part2)]
 fn solve_part2(input: &str) -> String {
     let mut register: i32 = 1;
     let mut current_job: Option<i32> = None;
-    let mut crt_screen: Vec<Vec<char>> = Vec::new();
-    let mut current_crt_row: Vec<char> = Vec::new();
-    let mut lines = input.lines();
+    let mut crt: Vec<Vec<char>> = Vec::new();
+    let mut crt_register: Vec<char> = Vec::new();
+    let mut line_iterator = input.lines();
     let mut i = 1;
     loop {
-        let mut this_pixel = '.';
-        if (register..=register + 2).contains(&(i - 40 * crt_screen.len() as i32)) {
-            this_pixel = '#'
-        }
-        current_crt_row.push(this_pixel);
+        crt_register.push(match () {
+            _ if (register..=register + 2).contains(&(i - 40 * crt.len() as i32)) => '#',
+            _ => '.',
+        });
         if i % 40 == 0 {
-            crt_screen.push(current_crt_row);
-            current_crt_row = Vec::new();
+            crt.push(crt_register.clone());
+            crt_register.clear();
         }
         match current_job {
-            Some(job) => {
-                register += job;
+            Some(instruction) => {
+                register += instruction;
                 current_job = None;
             }
-            None => {
-                let line = lines.next();
-                match line {
-                    Some(v) => {
-                        if v.starts_with("addx") {
-                            let n: i32 = v.split_once(" ").unwrap().1.parse().unwrap();
-                            current_job = Some(n);
-                        }
-                    }
-                    None => break,
+            None => match line_iterator.next() {
+                Some(v) if v.starts_with("addx") => {
+                    current_job = Some(v.split_once(" ").unwrap().1.parse().unwrap());
                 }
-            }
+                Some(_) => continue,
+                None => break,
+            },
         }
         i += 1;
     }
-    let result: String = crt_screen
+    let result: String = crt
         .iter()
         .map(|row| row.iter().collect::<String>())
         .join("\n");
 
-    // only adding newline to the beginning so the resulting ascii letters are readable
+    // only adding newline to the beginning so the resulting ascii letters are more readable
     "\n".to_string() + &result
 }
 
