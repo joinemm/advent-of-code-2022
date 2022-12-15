@@ -8,6 +8,7 @@ version = "0.1.0"
 dependencies = [
  "aoc-runner",
  "aoc-runner-derive",
+ "automod",
  "itertools",
  "slab_tree",
  "take-until",
@@ -41,6 +42,17 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
+]
+
+[[package]]
+name = "automod"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a7feac164c18ee671e3e01be1ab9c0a362f5ef3eda26d44b06f1df897cd43c4e"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
